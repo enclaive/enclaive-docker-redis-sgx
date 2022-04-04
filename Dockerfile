@@ -12,6 +12,7 @@ RUN apt-get update -y && apt-get install -y \
 # copy configuration
 WORKDIR /etc/redis/
 COPY conf/redis.conf .
+RUN mkdir -m0777 /data
 
 
 # create manifest and argument files

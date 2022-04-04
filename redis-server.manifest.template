@@ -30,6 +30,10 @@ fs.mount.app.type = "chroot"
 fs.mount.app.path = "/usr/bin/redis-server"
 fs.mount.app.uri  = "file:/usr/bin/redis-server"
 
+fs.mount.data.type = "chroot"
+fs.mount.data.path = "/data"
+fs.mount.data.uri = "file:/data"
+
 sgx.debug = true
 sgx.nonpie_binary = true
 sgx.enclave_size = "1024M"
@@ -58,4 +62,6 @@ sgx.allowed_files = [
   # getaddrinfo(3) configuration file. Glibc reads this file to correctly find
   # network addresses. For more info, see 'man gai.conf'.
   "file:/etc/gai.conf",
+
+  "file:/data/",
 ]
