@@ -1,14 +1,16 @@
 version: '2'
 
 services:
-  redis:
+  redis-sgx:
     image: enclaive/redis-sgx
     container_name: "redis-sgx"
     build:
       context: .
-    volumes:
-      - /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket
-    ports:
-      - "6379:6379"
     devices:
       - "/dev/sgx_enclave:/dev/sgx_enclave"
+  redis:
+    image: enclaive/redis-sgx
+    container_name: "redis"
+    entrypoint: ""
+    build:
+      context: .
