@@ -10,7 +10,7 @@ docker-compose up
 ## set a key on the unencryped redis
 
 ```sh
-docker exec -ti redis redis-cli set mysecret geheim
+docker exec -ti redis redis-cli set mysecret red
 ```
 
 
@@ -26,7 +26,7 @@ grep: core.50866: binary file matches
 ## set a key on the encryped redis
 
 ```sh
-docker exec -ti redis-sgx redis-cli set mysecret geheim
+docker exec -ti redis-sgx redis-cli set mysecret red
 ```
 
 ## observe that it's NOT possible to find the message content in memory
