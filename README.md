@@ -1,6 +1,6 @@
 # Redis-SGX Demonstration
 
-The goal is to show that the in-memory database redis is secure even in presence of memory dumps. The rationality is that the enclaived redis constainer `redis-sgx` by design is memory encrypted and thus at any moment in time the dump consists of ciphertexts. We show this by searching for the string `mysecret' both in redis-sgx as well as in vanilla redis.
+The goal is to show that the in-memory database redis is secure even in presence of memory dumps. The rationality is that the enclaived redis constainer redis-sgx by design is memory encrypted and thus at any moment in time the dump consists of ciphertexts. We show this by searching for the string `mysecret` both in redis-sgx as well as in vanilla redis.
 
 ## Prerequisites
 Install `gcore` to dumb the memory
