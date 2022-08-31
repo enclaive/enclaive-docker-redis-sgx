@@ -1,4 +1,4 @@
-FROM enclaive/gramine-os:latest
+FROM enclaive/gramine-os:jammy-7e9d6925
 
 RUN apt-get update -y \
     && apt-get install -y redis-server libatomic1 \
