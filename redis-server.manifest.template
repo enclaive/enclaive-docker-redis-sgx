@@ -30,7 +30,7 @@ fs.mount.app.type = "chroot"
 fs.mount.app.path = "/usr/bin/redis-server"
 fs.mount.app.uri  = "file:/usr/bin/redis-server"
 
-fs.mount.data.type = "chroot"
+fs.mount.data.type = "tmpfs"
 fs.mount.data.path = "/data"
 fs.mount.data.uri = "file:/data"
 
