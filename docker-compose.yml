@@ -1,16 +1,18 @@
 version: '2'
 
 services:
+
   redis-sgx:
-    image: enclaive/redis-sgx
+    image: enclaive/redis-sgx:latest
     container_name: "redis-sgx"
-    build:
-      context: .
+    build: .
     devices:
-      - "/dev/sgx_enclave:/dev/sgx_enclave"
+      - "/dev/sgx/enclave:/dev/sgx/enclave"
+      - "/dev/sgx/enclave:/dev/sgx_enclave"
+      - "/dev/sgx_provision:/dev/sgx_provision"
+
   redis:
-    image: enclaive/redis-sgx
+    image: enclaive/redis-sgx:latest
     container_name: "redis"
     entrypoint: ""
-    build:
-      context: .
+    build: .
