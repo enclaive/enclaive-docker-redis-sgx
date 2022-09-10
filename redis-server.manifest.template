@@ -15,6 +15,8 @@ fs.mounts = [
     { path = "/usr",              uri = "file:/usr" },
     { path = "/lib",              uri = "file:{{ gramine.runtimedir() }}" },
     { path = "{{ arch_libdir }}", uri = "file:{{ arch_libdir }}" },
+
+    { path = "/tls",              uri = "file:/tls" },
     { path = "/var/lib/redis",    uri = "file:/data", type = "encrypted", key_name = "data" },
     { path = "/var/log/redis",    uri = "file:/logs", type = "encrypted", key_name = "logs" },
 ]
@@ -42,4 +44,8 @@ sgx.trusted_files = [
 
     "file:/etc/group",
     "file:/etc/passwd",
+]
+
+sgx.allowed_files = [
+    "file:/tls/",
 ]

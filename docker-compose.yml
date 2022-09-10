@@ -6,6 +6,7 @@ services:
     container_name: "redis-sgx"
     build: .
     volumes:
+      - "./tls/:/tls/"
       - type: volume
         target: /data
       - type: volume
