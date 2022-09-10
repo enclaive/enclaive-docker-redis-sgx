@@ -6,6 +6,8 @@ services:
     image: enclaive/redis-sgx:latest
     container_name: "redis-sgx"
     build: .
+    volumes:
+      - "./tls/:/tls/"
     devices:
       - "/dev/sgx/enclave:/dev/sgx/enclave"
       - "/dev/sgx/enclave:/dev/sgx_enclave"
@@ -15,4 +17,6 @@ services:
     image: enclaive/redis-sgx:latest
     container_name: "redis"
     build: .
+    volumes:
+      - "./tls/:/tls/"
     entrypoint: /usr/bin/redis-server /etc/redis/redis.conf

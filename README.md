@@ -17,30 +17,28 @@ docker compose up
 ## Set a key on the unencryped redis
 
 ```sh
-docker exec -ti redis redis-cli set mysecret red
+docker exec -ti redis redis-cli --tls --cacert /tls/ca.crt set mysecret red
 ```
 
 
 ## Observe that it's possible to find the message content in memory
 
 ```sh
-sudo gcore -o vanilla $(pgrep redis-server)
-grep mysecret vanilla.*
-grep: vanilla.25575: binary file matches
+sudo gcore -o core.vanilla $(pgrep redis-server)
+grep mysecret core.vanilla.*
+grep: core.vanilla.25575: binary file matches
 ```
 
 ## Set a key on the encryped redis
 
 ```sh
-docker exec -ti redis-sgx redis-cli set mysecret red
+docker exec -ti redis-sgx redis-cli --tls --cacert /tls/ca.crt set mysecret red
 ```
 
 ## Observe that it's NOT possible to find the message content in memory
 
-TODO: Since the network traffic is not encrypted at the moment, the buffer inside the loader contains the query:
-
 ```sh
-sudo gcore -o sgx $(pgrep loader)
-grep mysecret sgx.*
-grep: sgx.25692: binary file matches
+sudo gcore -o core.sgx $(pgrep loader)
+grep mysecret core.sgx.*
+<nothing>
 ```
