@@ -2,13 +2,17 @@ version: '2'
 
 services:
   redis:
-    image: enclaive/redis-sgx
+    image: enclaive/redis-sgx:latest
     container_name: "redis-sgx"
-    build:
-      context: .
+    build: .
     volumes:
-      - /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket
+      - type: volume
+        target: /data
+      - type: volume
+        target: /logs
     ports:
       - "6379:6379"
     devices:
-      - "/dev/sgx_enclave:/dev/sgx_enclave"
+      - "/dev/sgx/enclave:/dev/sgx/enclave"
+      - "/dev/sgx/enclave:/dev/sgx_enclave"
+      - "/dev/sgx_provision:/dev/sgx_provision"
