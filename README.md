@@ -24,10 +24,9 @@ docker exec -ti redis redis-cli set mysecret red
 ## Observe that it's possible to find the message content in memory
 
 ```sh
-ps aux | grep redis-server
-sudo gcore 50866    # pid redis-server 0.0.0.0:6379
-grep mysecret core.50866
-grep: core.50866: binary file matches
+sudo gcore -o vanilla $(pgrep redis-server)
+grep mysecret vanilla.*
+grep: vanilla.25575: binary file matches
 ```
 
 ## Set a key on the encryped redis
@@ -38,9 +37,10 @@ docker exec -ti redis-sgx redis-cli set mysecret red
 
 ## Observe that it's NOT possible to find the message content in memory
 
+TODO: Since the network traffic is not encrypted at the moment, the buffer inside the loader contains the query:
+
 ```sh
-ps aux | grep enclaive
-sudo gcore 26187    # pid /bin/bash /entrypoint/enclaive.sh redis-server /etc/redis/redis.conf
-grep mysecret core.26187
-<nothing>
+sudo gcore -o sgx $(pgrep loader)
+grep mysecret sgx.*
+grep: sgx.25692: binary file matches
 ```

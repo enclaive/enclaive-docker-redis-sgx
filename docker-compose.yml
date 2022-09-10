@@ -14,5 +14,5 @@ services:
   redis:
     image: enclaive/redis-sgx:latest
     container_name: "redis"
-    entrypoint: ""
     build: .
+    entrypoint: /usr/bin/redis-server /etc/redis/redis.conf
