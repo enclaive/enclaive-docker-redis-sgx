@@ -26,6 +26,8 @@
     ·
     <a href="https://github.com/enclaive/enclaive-docker-redis-sgx/issues">Request Feature</a>
   </p>
+      <a href="https://youtu.be/qnugkIExe9w"><img    src="https://img.youtube.com/vi/qnugkIExe9w/0.jpg"></img></a>
+        <br>Demo-Video: Dumping the Redis Memory while in Use (<a href="https://github.com/enclaive/enclaive-docker-redis-sgx/tree/demo">read more</a>)
 </div>
 
 <!-- TL;TD --> 
